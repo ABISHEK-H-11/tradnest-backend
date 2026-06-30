@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/admin/user")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://tradnest-frontend.vercel.app", allowCredentials = "true")
 public class AdminUserContoller {
 	
 	private AdminUserServiceContract adminUserServiceContract;
