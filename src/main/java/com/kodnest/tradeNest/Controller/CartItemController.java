@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/customer/cart")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://tradnest-frontend.vercel.app", allowCredentials = "true")
 public class CartItemController {
 
 	private CartServiceContract cartServiceContract;
