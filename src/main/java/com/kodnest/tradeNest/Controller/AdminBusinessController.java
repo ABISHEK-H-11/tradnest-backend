@@ -17,7 +17,7 @@ import com.kodnest.tradeNest.serviceContract.AdminBusnessServiceContract;
 
 @RestController
 @RequestMapping("/api/admin/business")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://tradnest-frontend.vercel.app", allowCredentials = "true")
 public class AdminBusinessController {
 
 	private AdminBusnessServiceContract adminBusnessServiceContract;
