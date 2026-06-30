@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/customer/order")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://tradnest-frontend.vercel.app", allowCredentials = "true")
 public class OrderContoller {
 	
 	private OrderServiceContract orderServiceContract;
