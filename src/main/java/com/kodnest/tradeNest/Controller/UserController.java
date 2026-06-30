@@ -44,7 +44,13 @@ public class UserController {
 			System.out.println(SavedUser + "---->");
 			return ResponseEntity.ok().body(Map.of("messgae","User regestered successfully"));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messgae","User regestere failed"));
+    		e.printStackTrace();
+
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            	.body(Map.of(
+                "error", e.getClass().getSimpleName(),
+                "message", e.getMessage()
+            ));
 		}
 	}
 	@PostMapping("/login")
