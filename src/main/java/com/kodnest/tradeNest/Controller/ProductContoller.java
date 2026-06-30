@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/customer/products")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://tradnest-frontend.vercel.app", allowCredentials = "true")
 public class ProductContoller {
 	
 	private ProductServiceContract productServiceContract;
