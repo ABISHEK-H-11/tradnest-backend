@@ -59,15 +59,15 @@ public class AuthenticationFilter implements Filter{
 		 
 		 
 		 String requestURI = httpServletRequest.getRequestURI();
-		
+		if(httpServletRequest.getMethod().equalsIgnoreCase("OPTIONS")) {
+				setCORSHeaders(httpServletResponse);
+				return;
+		}
 		 if(Arrays.asList(UNAUTHENDICATED_PATH).contains(requestURI)) {
 			 chain.doFilter(request, response);
 			 return;
 		 }	
-		 if(httpServletRequest.getMethod().equalsIgnoreCase("OPTIONS")) {
-				setCORSHeaders(httpServletResponse);
-				return;
-		}
+		 
 		String token = getAuthTokenFromCookie(httpServletRequest);
 		if(token == null || !jwtAuthServiceContract.validateToken(token)) {
 			sendErrorResponce(httpServletResponse, HttpServletResponse.SC_UNAUTHORIZED, "Unotherizesd: Ivaild or missing token");
