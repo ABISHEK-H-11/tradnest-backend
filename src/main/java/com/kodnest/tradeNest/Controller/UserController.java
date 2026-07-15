@@ -89,7 +89,8 @@ public class UserController {
 					.httpOnly(true)
 					 .secure(false)
 					 .path("/")
-					 .maxAge(0)
+					 .maxAge(60 * 60)
+					 .sameSite("Lax")
 					 .build(); 
 			response.addHeader("Set-Cookie", cookie.toString());
 			return ResponseEntity.ok(Map.of("message", "Logout successfull"));
