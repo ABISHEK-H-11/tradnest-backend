@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class AuthenticationFilter implements Filter{
 	
-	private String ALLOWED_ORIGIN = "https://tradnest-frontend-git-main-abisheka1342003-7995s-projects.vercel.app";
+	private String ALLOWED_ORIGIN = "https://tradnest-frontend.vercel.app";
 	private static String []  UNAUTHENDICATED_PATH = {
 			"/api/user/login",
 			"/api/user/regestration"
@@ -59,15 +59,15 @@ public class AuthenticationFilter implements Filter{
 		 
 		 
 		 String requestURI = httpServletRequest.getRequestURI();
-		if(httpServletRequest.getMethod().equalsIgnoreCase("OPTIONS")) {
-				setCORSHeaders(httpServletResponse);
-				return;
-		}
+		
 		 if(Arrays.asList(UNAUTHENDICATED_PATH).contains(requestURI)) {
 			 chain.doFilter(request, response);
 			 return;
 		 }	
-		 
+		 if(httpServletRequest.getMethod().equalsIgnoreCase("OPTIONS")) { // preflightRequest
+				setCORSHeaders(httpServletResponse); 
+				return;
+		}
 		String token = getAuthTokenFromCookie(httpServletRequest);
 		if(token == null || !jwtAuthServiceContract.validateToken(token)) {
 			sendErrorResponce(httpServletResponse, HttpServletResponse.SC_UNAUTHORIZED, "Unotherizesd: Ivaild or missing token");
@@ -87,7 +87,7 @@ public class AuthenticationFilter implements Filter{
 			sendErrorResponce(httpServletResponse, HttpServletResponse.SC_FORBIDDEN, "Forbidden: Admin access required");
 			return;
 		}
-		httpServletRequest.setAttribute("AuthendicatedUser", user);
+		httpServletRequest.setAttribute("AuthendicatedUser", user); // This stores an object in the current request.
 		chain.doFilter(request,response);
 		
 	}
