@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class AuthenticationFilter implements Filter{
 	
-	private String ALLOWED_ORIGIN = "https://tradnest-frontend.vercel.app";
+	private String ALLOWED_ORIGIN = "https://tradnest-frontend-git-main-abisheka1342003-7995s-projects.vercel.app";
 	private static String []  UNAUTHENDICATED_PATH = {
 			"/api/user/login",
 			"/api/user/regestration"
