@@ -31,7 +31,7 @@ public class ProductService implements ProductServiceContract{
 
 	@Override
 	public List<Productss> getProductsByCatogrey(String categories) {
-		if(!categories.isEmpty() || categories != null) {
+		if(categories != null && !categories.isEmpty() ) {
 			Categories categ = categoriesRepository.findByCategoryName(categories);
 			if(categ != null) {
 				List<Productss> productsses = productsRepository.findByCategories_CategoryId(categ.getCategoryId());
