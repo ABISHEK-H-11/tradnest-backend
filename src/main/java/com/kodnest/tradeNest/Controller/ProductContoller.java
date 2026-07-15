@@ -34,7 +34,7 @@ public class ProductContoller {
 	}
 	
 	@GetMapping()
-	public ResponseEntity<?> getProduct(@RequestParam String category, HttpServletRequest httpServletRequest) {
+	public ResponseEntity<?> getProduct(@RequestParam(required = false, defaultValue = "") String category, HttpServletRequest httpServletRequest) {
 		try {
 			User authorizeUser = (User) httpServletRequest.getAttribute("AuthendicatedUser");
 			
