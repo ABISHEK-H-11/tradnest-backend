@@ -63,10 +63,10 @@ public class UserController {
 			
 			ResponseCookie cookie = ResponseCookie.from("AuthToken", token)
 					.httpOnly(true)
-					 .secure(false)
+					 .secure(true)
 					 .path("/")
 					 .maxAge(60 * 60)
-					 .sameSite("Lax")
+					 .sameSite("None")
 					 .build(); 
 			
 					response.addHeader("Set-Cookie", cookie.toString());
